@@ -1113,22 +1113,32 @@ var listaProdutos = [
         else return total}, 0);
         console.log('Disponivel',Disponivel)
 
-/*exercico 4*/
+/*exercicio 4*/
 
-    //const dispoDesta = listaProdutos.filter()
-        //console.log('Disponivel/Em Destaque',dispoDesta);
 
-    /*exercicio 5*/
+
+/*exercicio 5*/
 
     const totalInventario = listaProdutos.reduce((prevVal,elem) => prevVal+elem.preco, 0 ) * 
     listaProdutos.reduce((prevVal,elem) => prevVal+elem.qtdEstoque, 0 )
     console.log('Valor Total Inventario',totalInventario);
-   
 
-    /*exercicio 6*/
+ /*exercicio 6 */
+ 
+    const maisValioso = listaProdutos.reduce(function(acumulador, valor){
+     if (acumulador.preco > valor.preco) return acumulador;
+     return valor; 
+ });
+ console.log(maisValioso)
 
-let maiorValorFinal = listaProdutos.reduce(function(maiorValor, preco){
-    return Math.max(maiorValor, preco)
-}, 0)
- console.log(maiorValorFinal)
+ /* exerciocio 7*/
+
+ const maisBarato = listaProdutos.reduce(function(acumulador, valor){
+    if (acumulador.preco < valor.preco) return acumulador;
+    return valor; 
+});
+console.log(maisBarato)
+
+/* exerciocio 8*/
+
 
