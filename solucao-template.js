@@ -1112,6 +1112,29 @@ function exercicio1(){
 
 }
 
+function exercicio2(){
+    var total = 0
+    for (i=0; i<listaProdutos.length; i++){
+        let produto = listaProdutos[i];
+
+        if (produto.emDestaque== "sim"){
+            total += 1;
+        }}
+        console.log("Total Produtos Em Destaque =" +total)
+
+}
+function exercicio3(){
+    var total = 0
+    for (i=0; i<listaProdutos.length; i++){
+        let produto = listaProdutos[i];
+
+        if (produto.disponivel== "sim"){
+            total += 1;
+        }}
+        console.log("Total Produtos Disponivel =" +total)
+
+}
+
 function exercicio4(){
     // a idéia é muito similar ao exercício 1, porém eu tenho 1 condição antes de somar
     var total = 0;
@@ -1128,6 +1151,21 @@ function exercicio4(){
 
 }
 
+function exercicio5(){
+    var total=0;  // essa é a minha variável que vai acumular o total de produtos
+    // quanto ela deve valer inicialmente? 0,pois antes de percorrer a lista, não 
+    // tenho nenhum produto
+
+
+    // como eu percorro uma lista?
+    for(i=0; i<listaProdutos.length; i++){
+        // o que eu faço a cada linha?
+        let produto = listaProdutos[i];
+        total = total + produto.qtdEstoque * produto.preco;
+    }
+    // no final do algoritmo, exibo esse total, numa mensagem para o usuário
+    console.log("Valor Total do Inventario = "+total);
+}
 function exercicio6(){
     // a regra geral para saber se um produto é o mais caro ou o mais barato sempre é
     // ter um valor de referência - em geral o 1o valor
@@ -1143,6 +1181,43 @@ function exercicio6(){
     }
     console.log("Produto mais caro da empresa é o  "+produtoMaisCaro.descricao+ " cujo preço é R$ "+produtoMaisCaro.preco);
     
+
+}
+
+function exercicio7(){
+    // a regra geral para saber se um produto é o mais caro ou o mais barato sempre é
+    // ter um valor de referência - em geral o 1o valor
+
+    let produtoMaisBarato = listaProdutos[0];
+    for (i=1; i<listaProdutos.length; i++){
+        // aqui preciso comparar o preço de cada produto da lista com este produto de referência
+        // se eu achar um produto + caro, o que eu devo fazer? Tornar este produto a nova referência
+        let produto = listaProdutos[i];
+        if (produto.preco < produtoMaisBarato.preco){
+            produtoMaisBarato = produto;
+        }
+    }
+    console.log("Produto mais barato da empresa é o  "+produtoMaisBarato.descricao+ " cujo preço é R$ "+produtoMaisBarato.preco);
+    
+
+}
+
+function exercicio8(){
+    // bastante similar ao exercício 6, porém temos que considerar os produtos que POSSUEM ESTOQUE, senão
+    // ficamos reféns de só exibir produtos sem estoque
+    let estoqueMaisValioso = listaProdutos[0];
+    for (i=1; i<listaProdutos.length; i++){
+        let produto = listaProdutos[i];
+        // aqui eu tenho 2 itens para definir: preço * qtdEstoque, porém, antes:
+        if (produto.qtdEstoque > 0){
+            if (produto.preco * produto.qtdEstoque > estoqueMaisValioso.preco * estoqueMaisValioso.qtdEstoque){
+                estoqueMaisValioso = produto;
+            }
+        }        
+    }
+    console.log("O estoque mais valioso é do produto "+estoqueMaisValioso.descricao + 
+                " cujo valor está estimado em R$ "+(estoqueMaisValioso.preco*estoqueMaisValioso.qtdEstoque));
+
 
 }
 
