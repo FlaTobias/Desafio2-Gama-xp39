@@ -1142,7 +1142,7 @@ function exercicio5(){
     var total = 0;
     for(i=0; i<listaProdutos.length; i++){
         let produto = listaProdutos[i];
-            total   = total + produto.qtdEstoque * produto.preco;
+            total   = total + (produto.qtdEstoque * produto.preco);
     }
     console.log("Valor Total do Inventario = "+total);
 }
@@ -1202,9 +1202,9 @@ function exercicio10(){
     var total = 0;
     for(i=0; i<listaProdutos.length; i++){
         let produto = listaProdutos[i];
-            total   = total + produto.qtdEstoque * produto.preco / listaProdutos.length;
+            total   = total + produto.preco;
     }
-    console.log("Valor Total do Ticket Medio = "+total);
+    console.log("Valor Total do Ticket Medio = "+total / listaProdutos.length);
 }
 
 /*function exercicio11(){
