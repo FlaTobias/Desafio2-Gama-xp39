@@ -1,5 +1,4 @@
-var listaProdutos = [
-    {
+var listaProdutos = [{
         "codProduto": 25754,
         "descricao": "ADAPTADOR BLUETOOH USB RECEPTOR DE AUDIO P2",
         "preco": 5.0,
@@ -1094,123 +1093,124 @@ var listaProdutos = [
 ];
 
 
-                            // agora começam as resoluções
+// agora começam as resoluções
 
-function exercicio1(){
+function exercicio1() {
     var total = 0;
-    for(i=0; i<listaProdutos.length; i++){
+    for (i = 0; i < listaProdutos.length; i++) {
         let produto = listaProdutos[i];
-            total   = total + produto.qtdEstoque;
+        total = total + produto.qtdEstoque;
     }
-    console.log("Total de produtos em estoque = "+total);
+    console.log("Total de produtos em estoque = " + total);
 }
 
-function exercicio2(){
+function exercicio2() {
     var total = 0
-    for (i=0; i<listaProdutos.length; i++){
+    for (i = 0; i < listaProdutos.length; i++) {
         let produto = listaProdutos[i];
-        if (produto.emDestaque== "sim"){
+        if (produto.emDestaque == "sim") {
             total += 1;
-        }}
-        console.log("Total Produtos Em Destaque =" +total)
+        }
+    }
+    console.log("Total Produtos Em Destaque =" + total)
 }
 
-function exercicio3(){
+function exercicio3() {
     var total = 0
-    for (i=0; i<listaProdutos.length; i++){
+    for (i = 0; i < listaProdutos.length; i++) {
         let produto = listaProdutos[i];
 
-        if (produto.disponivel== "sim"){
+        if (produto.disponivel == "sim") {
             total += 1;
-        }}
-        console.log("Total Produtos Disponivel =" +total)
+        }
+    }
+    console.log("Total Produtos Disponivel =" + total)
 }
 
-function exercicio4(){
+function exercicio4() {
     var total = 0;
-    for (i=0; i<listaProdutos.length; i++){
+    for (i = 0; i < listaProdutos.length; i++) {
         let produto = listaProdutos[i];
 
-        if (produto.emDestaque == "sim" && produto.disponivel == "sim"){
+        if (produto.emDestaque == "sim" && produto.disponivel == "sim") {
             total += produto.qtdEstoque;
         }
     }
-    console.log("Total de produtos em estoque disponíveis e em destaque = "+total);
+    console.log("Total de produtos em estoque disponíveis e em destaque = " + total);
 }
 
-function exercicio5(){
+function exercicio5() {
     var total = 0;
-    for(i=0; i<listaProdutos.length; i++){
+    for (i = 0; i < listaProdutos.length; i++) {
         let produto = listaProdutos[i];
-            total   = total + (produto.qtdEstoque * produto.preco);
+        total = total + (produto.qtdEstoque * produto.preco);
     }
-    console.log("Valor Total do Inventario = "+total);
+    console.log("Valor Total do Inventario = " + total);
 }
 
-function exercicio6(){
+function exercicio6() {
     let produtoMaisCaro = listaProdutos[0];
-    for (i=1; i<listaProdutos.length; i++){
+    for (i = 1; i < listaProdutos.length; i++) {
         let produto = listaProdutos[i];
-        if (produto.preco > produtoMaisCaro.preco){
+        if (produto.preco > produtoMaisCaro.preco) {
             produtoMaisCaro = produto;
         }
     }
-    console.log("Produto mais caro da empresa é o  "+produtoMaisCaro.descricao+ " cujo preço é R$ "+produtoMaisCaro.preco);
+    console.log("Produto mais caro da empresa é o  " + produtoMaisCaro.descricao + " cujo preço é R$ " + produtoMaisCaro.preco);
 }
 
-function exercicio7(){
+function exercicio7() {
     let produtoMaisBarato = listaProdutos[0];
-    for (i=1; i<listaProdutos.length; i++){
+    for (i = 1; i < listaProdutos.length; i++) {
         let produto = listaProdutos[i];
-        if (produto.preco < produtoMaisBarato.preco){
+        if (produto.preco < produtoMaisBarato.preco) {
             produtoMaisBarato = produto;
         }
     }
-    console.log("Produto mais barato da empresa é o  "+produtoMaisBarato.descricao+ " cujo preço é R$ "+produtoMaisBarato.preco);
+    console.log("Produto mais barato da empresa é o  " + produtoMaisBarato.descricao + " cujo preço é R$ " + produtoMaisBarato.preco);
 }
 
-function exercicio8(){
+function exercicio8() {
     let estoqueMaisValioso = listaProdutos[0];
-    for (i=1; i<listaProdutos.length; i++){
+    for (i = 1; i < listaProdutos.length; i++) {
         let produto = listaProdutos[i];
-        if (produto.qtdEstoque > 0){
-            if (produto.preco * produto.qtdEstoque > estoqueMaisValioso.preco * estoqueMaisValioso.qtdEstoque){
+        if (produto.qtdEstoque > 0) {
+            if (produto.preco * produto.qtdEstoque > estoqueMaisValioso.preco * estoqueMaisValioso.qtdEstoque) {
                 estoqueMaisValioso = produto;
             }
-        }        
+        }
     }
 
-    console.log("O estoque mais valioso é do produto "+estoqueMaisValioso.descricao + 
-                " cujo valor está estimado em R$ "+(estoqueMaisValioso.preco*estoqueMaisValioso.qtdEstoque));
+    console.log("O estoque mais valioso é do produto " + estoqueMaisValioso.descricao +
+        " cujo valor está estimado em R$ " + (estoqueMaisValioso.preco * estoqueMaisValioso.qtdEstoque));
 }
 
-function exercicio9(){
+function exercicio9() {
     let estoqueMaisBarato = listaProdutos[0];
-    for (i=1; i<listaProdutos.length; i++){
+    for (i = 1; i < listaProdutos.length; i++) {
         let produto = listaProdutos[i];
-        if (produto.qtdEstoque > 0){
-            if (produto.preco * produto.qtdEstoque < estoqueMaisBarato.preco * estoqueMaisBarato.qtdEstoque){
+        if (produto.qtdEstoque > 0) {
+            if (produto.preco * produto.qtdEstoque < estoqueMaisBarato.preco * estoqueMaisBarato.qtdEstoque) {
                 estoqueMaisBarato = produto;
             }
-        }        
+        }
     }
-    console.log("O estoque mais barato é do produto "+estoqueMaisBarato.descricao + 
-                " cujo valor está estimado em R$ "+(estoqueMaisBarato.preco*estoqueMaisBarato.qtdEstoque));
+    console.log("O estoque mais barato é do produto " + estoqueMaisBarato.descricao +
+        " cujo valor está estimado em R$ " + (estoqueMaisBarato.preco * estoqueMaisBarato.qtdEstoque));
 }
 
-function exercicio10(){
+function exercicio10() {
     var total = 0;
-    for(i=0; i<listaProdutos.length; i++){
+    for (i = 0; i < listaProdutos.length; i++) {
         let produto = listaProdutos[i];
-            total   = total + produto.preco;
+        total = total + produto.preco;
     }
-    console.log("Valor Total do Ticket Medio = "+total / listaProdutos.length);
+    console.log("Valor Total do Ticket Medio = " + total / listaProdutos.length);
 }
 
 /*function exercicio11(){
 
     var listaDeptos = [];
-    // como saber todos os departamentos??
     let codDepto = 0;
     for (i=0;i<listaProdutos.length; i++){
         let produto = listaProdutos[i];
@@ -1227,8 +1227,6 @@ function exercicio10(){
         }
     }
 
-    // agora, vou novamente percorrer a lista e, para cada produto, percorro os departamentos definidos e somo o estoque
-
     for (i=0; i < listaProdutos.length ; i++){
         // para cada produto da lista, eu preciso encontrar seu respectivo departamento na outra lista e somar ao seu estoque
         let produto = listaProdutos[i];
@@ -1241,8 +1239,6 @@ function exercicio10(){
             }
         }
     }
-
-    // depois de tudo, exibo a lista
     console.log(listaDeptos);
 }
 
