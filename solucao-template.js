@@ -1207,6 +1207,8 @@ function exercicio10(){
     console.log("Valor Total do Ticket Medio = "+total / listaProdutos.length);
 }
 
+// Entrega segunda parte
+
 /*function exercicio11(){
 
     var listaDeptos = [];
