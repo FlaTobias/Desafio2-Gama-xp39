@@ -1362,7 +1362,7 @@ for (i=0; i<listaProdutos.length; i++){
             deptoMaisValioso = listaDeptos[j];
         }
     }
-console.log("O departamento mais valioso é o de "+deptoMaisValioso.nomeDepto+", com um valor total de: "+deptoMaisValioso.totalInventario.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
+console.log("O departamento mais valioso é de "+deptoMaisValioso.nomeDepto+", com valor total de: "+deptoMaisValioso.totalInventario.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
 }
 
 function exercicio15(){
@@ -1402,5 +1402,5 @@ function exercicio15(){
                 deptoMenosValioso = listaDeptos[j];
             }
         }
-    console.log("O departamento menos valioso é o de "+deptoMenosValioso.nomeDepto+", com um valor total de: "+deptoMenosValioso.totalInventario.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
+    console.log("O departamento menos valioso é de "+deptoMenosValioso.nomeDepto+", com valor total de: "+deptoMenosValioso.totalInventario.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
 }
