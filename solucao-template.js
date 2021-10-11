@@ -1207,15 +1207,13 @@ function exercicio10() {
     }
     console.log("Valor Total do Ticket Medio = " + total / listaProdutos.length);
 }
-
 function exercicio11(){
-
     var listaDeptos = [];
-    let codDepto    = 0;
+    let codDepto = 0;
     for (i=0;i<listaProdutos.length; i++){
         let produto = listaProdutos[i];
         if (produto.departamento.idDepto != codDepto){
-         let itemLista = {
+            let itemLista = {
                 nomeDepto     : produto.departamento.nomeDepto,
                 idDepto       : produto.departamento.idDepto,
                 somatoriaItens: 0
@@ -1224,19 +1222,15 @@ function exercicio11(){
             codDepto = produto.departamento.idDepto;
         }
     }
-
     for (i=0; i < listaProdutos.length ; i++){
         let produto = listaProdutos[i];
-
         for (j=0;j<listaDeptos.length; j++){
-            if (produto.departamento.idDepto == listaDeptos[j].idDepto){
+            if (produto.departamento.idDepto == listaDeptos[j].idDepto){  // o depto do produto corresponde ao depto da lista?
                 listaDeptos[j].somatoriaItens += produto.qtdEstoque;
                 break;
             }
         }
     }
-
-
     console.log("Somatória de itens do departamento "+listaDeptos[0].nomeDepto+" = "+listaDeptos[0].somatoriaItens);
     console.log("Somatória de itens do departamento "+listaDeptos[1].nomeDepto+" = "+listaDeptos[1].somatoriaItens);
     console.log("Somatória de itens do departamento "+listaDeptos[2].nomeDepto+" = "+listaDeptos[2].somatoriaItens);
@@ -1288,7 +1282,6 @@ function exercicio12(){
     console.log("Valor total do inventário do departamento "+listaDeptos[6].nomeDepto+" = "+listaDeptos[6].totalInventario.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
     console.log("Valor total do inventário do departamento "+listaDeptos[7].nomeDepto+" = "+listaDeptos[7].totalInventario.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
     console.log("Valor total do inventário do departamento "+listaDeptos[8].nomeDepto+" = "+listaDeptos[8].totalInventario.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
-
 
 }
 
