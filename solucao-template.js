@@ -1207,9 +1207,7 @@ function exercicio10(){
     console.log("Valor Total do Ticket Medio = "+total / listaProdutos.length);
 }
 
-// Entrega segunda parte
-
-/*function exercicio11(){
+function exercicio11(){
 
     var listaDeptos = [];
     // como saber todos os departamentos??
@@ -1244,20 +1242,67 @@ function exercicio10(){
         }
     }
 
-    // depois de tudo, exibo a lista
-    console.log(listaDeptos);
+    console.log("Somatória de itens do departamento "+listaDeptos[0].nomeDepto+" = "+listaDeptos[0].somatoriaItens);
+    console.log("Somatória de itens do departamento "+listaDeptos[1].nomeDepto+" = "+listaDeptos[1].somatoriaItens);
+    console.log("Somatória de itens do departamento "+listaDeptos[2].nomeDepto+" = "+listaDeptos[2].somatoriaItens);
+    console.log("Somatória de itens do departamento "+listaDeptos[3].nomeDepto+" = "+listaDeptos[3].somatoriaItens);
+    console.log("Somatória de itens do departamento "+listaDeptos[4].nomeDepto+" = "+listaDeptos[4].somatoriaItens);
+    console.log("Somatória de itens do departamento "+listaDeptos[5].nomeDepto+" = "+listaDeptos[5].somatoriaItens);
+    console.log("Somatória de itens do departamento "+listaDeptos[6].nomeDepto+" = "+listaDeptos[6].somatoriaItens);
+    console.log("Somatória de itens do departamento "+listaDeptos[7].nomeDepto+" = "+listaDeptos[7].somatoriaItens);
+    console.log("Somatória de itens do departamento "+listaDeptos[8].nomeDepto+" = "+listaDeptos[8].somatoriaItens);
+}
+
+function exercicio12(){
+    var listaDeptos = [];
+    let codDepto    = 0;
+    for (i=0;i<listaProdutos.length; i++){
+        let produto = listaProdutos[i];
+        if (produto.departamento.idDepto != codDepto){
+           let itemLista = {
+                nomeDepto      : produto.departamento.nomeDepto,
+                idDepto        : produto.departamento.idDepto,
+                somatoriaItens : 0,
+                totalEstoque   : 0,
+                totalInventario: 0
+            };
+            listaDeptos.push(itemLista);
+            codDepto = produto.departamento.idDepto;
+        }
+    }
+   for (i=0; i<listaProdutos.length; i++){
+        let produto = listaProdutos[i];
+        for (j=0; j<listaDeptos.length; j++){
+            if (produto.departamento.idDepto == listaDeptos[j].idDepto){
+                listaDeptos[j].totalEstoque   += produto.qtdEstoque;
+                listaDeptos[j].somatoriaItens += produto.preco;
+                break;
+            }
+        }
+    }
+    for (j=0; j<listaDeptos.length; j++){
+        listaDeptos[j].totalInventario += listaDeptos[j].totalEstoque * listaDeptos[j].somatoriaItens;
+    }
+
+    console.log("Valor total do inventário do departamento "+listaDeptos[0].nomeDepto+" = "+listaDeptos[0].totalInventario.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
+    console.log("Valor total do inventário do departamento "+listaDeptos[1].nomeDepto+" = "+listaDeptos[1].totalInventario.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
+    console.log("Valor total do inventário do departamento "+listaDeptos[2].nomeDepto+" = "+listaDeptos[2].totalInventario.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
+    console.log("Valor total do inventário do departamento "+listaDeptos[3].nomeDepto+" = "+listaDeptos[3].totalInventario.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
+    console.log("Valor total do inventário do departamento "+listaDeptos[4].nomeDepto+" = "+listaDeptos[4].totalInventario.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
+    console.log("Valor total do inventário do departamento "+listaDeptos[5].nomeDepto+" = "+listaDeptos[5].totalInventario.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
+    console.log("Valor total do inventário do departamento "+listaDeptos[6].nomeDepto+" = "+listaDeptos[6].totalInventario.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
+    console.log("Valor total do inventário do departamento "+listaDeptos[7].nomeDepto+" = "+listaDeptos[7].totalInventario.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
+    console.log("Valor total do inventário do departamento "+listaDeptos[8].nomeDepto+" = "+listaDeptos[8].totalInventario.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
+
 }
 
 function exercicio13(){
     var listaDeptos = [];
-    // como saber todos os departamentos??
-    let codDepto = 0;
+    let codDepto    = 0;
     for (i=0;i<listaProdutos.length; i++){
         let produto = listaProdutos[i];
         if (produto.departamento.idDepto != codDepto){
-            //console.log("Encontrei novo departamento = "+produto.departamento.nomeDepto);
-            // vou definir uma pequena estrutura para armazenar na lista, contendo o nome do departamento e inicialmente a quantidade zerada
-            let itemLista = {
+         let itemLista = {
                 nomeDepto     : produto.departamento.nomeDepto,
                 idDepto       : produto.departamento.idDepto,
                 somatoriaItens: 0,
@@ -1268,9 +1313,7 @@ function exercicio13(){
             codDepto = produto.departamento.idDepto;
         }
     }
-
-    // para cada produto, percorrer cada um dos departamentos da lista, fazendo as devidas somatórias (tanto de quantidade de itens, quanto de preço)
-    for (i=0; i<listaProdutos.length; i++){
+for (i=0; i<listaProdutos.length; i++){
         let produto = listaProdutos[i];
         for (j=0; j<listaDeptos.length; j++){
             if (produto.departamento.idDepto == listaDeptos[j].idDepto){
@@ -1280,15 +1323,95 @@ function exercicio13(){
             }
         }
     }
-
-    // defini todos os valores de somatoria de itens e também de total do estoque... para facilitar a compreensão,
-    // vamos pela última vez, percorrer a lista de departamentos e calcular o ticket médio
-
-    for (j=0; j<listaDeptos.length; j++){
+for (j=0; j<listaDeptos.length; j++){
         listaDeptos[j].ticketMedio = listaDeptos[j].totalEstoque / listaDeptos[j].somatoriaItens;
     }
 
-    console.log(listaDeptos);
+    console.log("Ticket médio do departamento "+listaDeptos[0].nomeDepto+" = "+listaDeptos[0].ticketMedio.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
+    console.log("Ticket médio do departamento "+listaDeptos[1].nomeDepto+" = "+listaDeptos[1].ticketMedio.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
+    console.log("Ticket médio do departamento "+listaDeptos[2].nomeDepto+" = "+listaDeptos[2].ticketMedio.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
+    console.log("Ticket médio do departamento "+listaDeptos[3].nomeDepto+" = "+listaDeptos[3].ticketMedio.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
+    console.log("Ticket médio do departamento "+listaDeptos[4].nomeDepto+" = "+listaDeptos[4].ticketMedio.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
+    console.log("Ticket médio do departamento "+listaDeptos[5].nomeDepto+" = "+listaDeptos[5].ticketMedio.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
+    console.log("Ticket médio do departamento "+listaDeptos[6].nomeDepto+" = "+listaDeptos[6].ticketMedio.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
+    console.log("Ticket médio do departamento "+listaDeptos[7].nomeDepto+" = "+listaDeptos[7].ticketMedio.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
+    console.log("Ticket médio do departamento "+listaDeptos[8].nomeDepto+" = "+listaDeptos[8].ticketMedio.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
+}
 
+function exercicio14(){
+    var listaDeptos = [];
+    let codDepto    = 0;
+    for (i=0;i<listaProdutos.length; i++){
+        let produto = listaProdutos[i];
+        if (produto.departamento.idDepto != codDepto){
+           let itemLista = {
+                nomeDepto      : produto.departamento.nomeDepto,
+                idDepto        : produto.departamento.idDepto,
+                somatoriaItens : 0,
+                valorTotal     : 0,
+                totalInventario: 0
+            };
+            listaDeptos.push(itemLista);
+            codDepto = produto.departamento.idDepto;
+        }
+    }
+for (i=0; i<listaProdutos.length; i++){
+        let produto = listaProdutos[i];
+        for (j=0; j<listaDeptos.length; j++){
+            if (produto.departamento.idDepto == listaDeptos[j].idDepto){
+                listaDeptos[j].somatoriaItens += produto.qtdEstoque;
+                listaDeptos[j].valorTotal     += produto.preco;
+                break;
+            }
+        }
+    }
 
-}*/
+    let deptoMaisValioso = {totalInventario: 0}
+    for (j=0; j<listaDeptos.length; j++){
+        listaDeptos[j].totalInventario += listaDeptos[j].valorTotal * listaDeptos[j].somatoriaItens;
+        if (deptoMaisValioso.totalInventario < listaDeptos[j].totalInventario){
+            deptoMaisValioso = listaDeptos[j];
+        }
+    }
+console.log("O departamento mais valioso é o de "+deptoMaisValioso.nomeDepto+", com um valor total de: "+deptoMaisValioso.totalInventario.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
+}
+
+function exercicio15(){
+    var listaDeptos = [];
+    let codDepto    = 0;
+    for (i=0;i<listaProdutos.length; i++){
+        let produto = listaProdutos[i];
+        if (produto.departamento.idDepto != codDepto){
+            let itemLista = {
+                nomeDepto      : produto.departamento.nomeDepto,
+                idDepto        : produto.departamento.idDepto,
+                somatoriaItens : 0,
+                valorTotal     : 0,
+                totalInventario: 0
+            };
+            listaDeptos.push(itemLista);
+            codDepto = produto.departamento.idDepto;
+        }
+    }
+    
+    for (i=0; i<listaProdutos.length; i++){
+        let produto = listaProdutos[i];
+        for (j=0; j<listaDeptos.length; j++){
+            if (produto.departamento.idDepto == listaDeptos[j].idDepto){
+                listaDeptos[j].valorTotal     += produto.preco;
+                listaDeptos[j].somatoriaItens += produto.qtdEstoque;
+                break;
+            }
+        }
+    }
+        let deptoMenosValioso = {totalInventario: 0}
+        for (j=0; j<listaDeptos.length; j++){
+            listaDeptos[j].totalInventario += listaDeptos[j].valorTotal * listaDeptos[j].somatoriaItens;
+            if (deptoMenosValioso.totalInventario == 0){
+            deptoMenosValioso = listaDeptos[j];}
+            else if (listaDeptos[j].totalInventario < deptoMenosValioso.totalInventario){
+                deptoMenosValioso = listaDeptos[j];
+            }
+        }
+    console.log("O departamento menos valioso é o de "+deptoMenosValioso.nomeDepto+", com um valor total de: "+deptoMenosValioso.totalInventario.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
+}
