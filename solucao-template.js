@@ -1225,7 +1225,7 @@ function exercicio11(){
     for (i=0; i < listaProdutos.length ; i++){
         let produto = listaProdutos[i];
         for (j=0;j<listaDeptos.length; j++){
-            if (produto.departamento.idDepto == listaDeptos[j].idDepto){  // o depto do produto corresponde ao depto da lista?
+            if (produto.departamento.idDepto == listaDeptos[j].idDepto){
                 listaDeptos[j].somatoriaItens += produto.qtdEstoque;
                 break;
             }
@@ -1264,24 +1264,22 @@ function exercicio12(){
         for (j=0; j<listaDeptos.length; j++){
             if (produto.departamento.idDepto == listaDeptos[j].idDepto){
                 listaDeptos[j].totalEstoque   += produto.qtdEstoque;
-                listaDeptos[j].somatoriaItens += produto.preco;
+                listaDeptos[j].somatoriaItens += (produto.preco * produto.qtdEstoque);
                 break;
             }
         }
     }
-    for (j=0; j<listaDeptos.length; j++){
-        listaDeptos[j].totalInventario += listaDeptos[j].totalEstoque * listaDeptos[j].somatoriaItens;
-    }
+    
 
-    console.log("Valor total do inventário do departamento "+listaDeptos[0].nomeDepto+" = "+listaDeptos[0].totalInventario.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
-    console.log("Valor total do inventário do departamento "+listaDeptos[1].nomeDepto+" = "+listaDeptos[1].totalInventario.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
-    console.log("Valor total do inventário do departamento "+listaDeptos[2].nomeDepto+" = "+listaDeptos[2].totalInventario.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
-    console.log("Valor total do inventário do departamento "+listaDeptos[3].nomeDepto+" = "+listaDeptos[3].totalInventario.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
-    console.log("Valor total do inventário do departamento "+listaDeptos[4].nomeDepto+" = "+listaDeptos[4].totalInventario.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
-    console.log("Valor total do inventário do departamento "+listaDeptos[5].nomeDepto+" = "+listaDeptos[5].totalInventario.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
-    console.log("Valor total do inventário do departamento "+listaDeptos[6].nomeDepto+" = "+listaDeptos[6].totalInventario.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
-    console.log("Valor total do inventário do departamento "+listaDeptos[7].nomeDepto+" = "+listaDeptos[7].totalInventario.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
-    console.log("Valor total do inventário do departamento "+listaDeptos[8].nomeDepto+" = "+listaDeptos[8].totalInventario.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
+    console.log("Valor total do inventário do departamento "+listaDeptos[0].nomeDepto+" = "+listaDeptos[0].somatoriaItens.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
+    console.log("Valor total do inventário do departamento "+listaDeptos[1].nomeDepto+" = "+listaDeptos[1].somatoriaItens.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
+    console.log("Valor total do inventário do departamento "+listaDeptos[2].nomeDepto+" = "+listaDeptos[2].somatoriaItens.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
+    console.log("Valor total do inventário do departamento "+listaDeptos[3].nomeDepto+" = "+listaDeptos[3].somatoriaItens.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
+    console.log("Valor total do inventário do departamento "+listaDeptos[4].nomeDepto+" = "+listaDeptos[4].somatoriaItens.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
+    console.log("Valor total do inventário do departamento "+listaDeptos[5].nomeDepto+" = "+listaDeptos[5].somatoriaItens.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
+    console.log("Valor total do inventário do departamento "+listaDeptos[6].nomeDepto+" = "+listaDeptos[6].somatoriaItens.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
+    console.log("Valor total do inventário do departamento "+listaDeptos[7].nomeDepto+" = "+listaDeptos[7].somatoriaItens.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
+    console.log("Valor total do inventário do departamento "+listaDeptos[8].nomeDepto+" = "+listaDeptos[8].somatoriaItens.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}));
 
 }
 
@@ -1349,7 +1347,7 @@ for (i=0; i<listaProdutos.length; i++){
         for (j=0; j<listaDeptos.length; j++){
             if (produto.departamento.idDepto == listaDeptos[j].idDepto){
                 listaDeptos[j].somatoriaItens += produto.qtdEstoque;
-                listaDeptos[j].valorTotal     += produto.preco;
+                listaDeptos[j].valorTotal     += (produto.preco * produto.qtdEstoque);
                 break;
             }
         }
@@ -1357,7 +1355,7 @@ for (i=0; i<listaProdutos.length; i++){
 
     let deptoMaisValioso = {totalInventario: 0}
     for (j=0; j<listaDeptos.length; j++){
-        listaDeptos[j].totalInventario += listaDeptos[j].valorTotal * listaDeptos[j].somatoriaItens;
+        listaDeptos[j].totalInventario += listaDeptos[j].valorTotal;
         if (deptoMaisValioso.totalInventario < listaDeptos[j].totalInventario){
             deptoMaisValioso = listaDeptos[j];
         }
@@ -1388,14 +1386,14 @@ function exercicio15(){
         for (j=0; j<listaDeptos.length; j++){
             if (produto.departamento.idDepto == listaDeptos[j].idDepto){
                 listaDeptos[j].valorTotal     += produto.preco;
-                listaDeptos[j].somatoriaItens += produto.qtdEstoque;
+                listaDeptos[j].somatoriaItens += (produto.qtdEstoque * produto.preco);
                 break;
             }
         }
     }
         let deptoMenosValioso = {totalInventario: 0}
         for (j=0; j<listaDeptos.length; j++){
-            listaDeptos[j].totalInventario += listaDeptos[j].valorTotal * listaDeptos[j].somatoriaItens;
+        listaDeptos[j].totalInventario = listaDeptos[j].somatoriaItens;
             if (deptoMenosValioso.totalInventario == 0){
             deptoMenosValioso = listaDeptos[j];}
             else if (listaDeptos[j].totalInventario < deptoMenosValioso.totalInventario){
